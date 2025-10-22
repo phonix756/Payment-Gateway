@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal - Review Your Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PayPal</h1>
+            <p>The safer, easier way to pay online</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header pending">
+                <div class="status-icon">👤</div>
+                <h2>Review Your Payment</h2>
+                <p>You're sending money to a friend</p>
+            </div>
+            
+            <div class="payment-summary">
+                <div class="summary-amount">
+                    <span class="amount" id="summaryAmount"></span>
+                    <span class="currency" id="summaryCurrency"></span>
+                </div>
+                <p class="summary-to">to <span id="summaryTo"></span></p>
+            </div>
+            
+            <div class="payment-details">
+                <h3>Payment Details</h3>
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="toValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Note:</span>
+                    <span class="value" id="noteValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Fee:</span>
+                    <span class="value">$100.00</span>
+                </div>
+                <div class="detail-row total">
+                    <span class="label">Total:</span>
+                    <span class="value" id="totalValue"></span>
+                </div>
+            </div>
+            
+            <div class="funding-source">
+                <h3>Funding Source</h3>
+                <div class="funding-option">
+                    <div class="funding-icon">💳</div>
+                    <div class="funding-details">
+                        <strong>PayPal Balance</strong>
+                        <p>$<span id="balanceAmount">125,000.50</span> available</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='paypal.html'">Cancel</button>
+                <button class="btn-primary" onclick="sendPayment()">Send Payment Now</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 1999-2025 PayPal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount') || '0.00';
+        const currency = urlParams.get('currency') || 'USD';
+        
+        document.getElementById('summaryAmount').textContent = '$' + amount;
+        document.getElementById('summaryCurrency').textContent = currency;
+        document.getElementById('summaryTo').textContent = urlParams.get('recipientEmail') || 'recipient@example.com';
+        document.getElementById('toValue').textContent = urlParams.get('recipientEmail') || 'recipient@example.com';
+        document.getElementById('amountValue').textContent = '$' + amount + ' ' + currency;
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('noteValue').textContent = urlParams.get('note') || 'No note';
+        document.getElementById('totalValue').textContent = '$' + amount + ' ' + currency;
+        
+        function sendPayment() {
+            window.location.href = `paypal-completed.html?recipientEmail=${urlParams.get('recipientEmail')}&amount=${amount}&currency=${currency}&fromName=${urlParams.get('fromName')}&note=${urlParams.get('note')}`;
+        }
+    </script>
+</body>
+</html>

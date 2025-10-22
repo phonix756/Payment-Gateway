@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chime - Transfer Complete</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Chime</h1>
+            <p>Mobile Banking</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header completed">
+                <div class="status-icon">✅</div>
+                <h2>Transfer Complete!</h2>
+                <p class="success-message">Money sent successfully to <span id="successRecipient"></span></p>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">Recipient:</span>
+                    <span class="value" id="recipientValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Email:</span>
+                    <span class="value" id="emailValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Message:</span>
+                    <span class="value" id="messageValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge completed-badge">Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Date:</span>
+                    <span class="value" id="dateValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Reference #:</span>
+                    <span class="value" id="referenceValue"></span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='chime.html'">Send Another</button>
+                <button class="btn-primary" onclick="window.location.href='index.html'">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Chime. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipient = urlParams.get('recipientName') || 'Recipient';
+        document.getElementById('successRecipient').textContent = recipient;
+        document.getElementById('recipientValue').textContent = recipient;
+        document.getElementById('emailValue').textContent = urlParams.get('recipientEmail') || 'email@example.com';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00');
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('messageValue').textContent = urlParams.get('message') || 'No message';
+        document.getElementById('dateValue').textContent = new Date().toLocaleString();
+        document.getElementById('referenceValue').textContent = 'CH' + Date.now();
+    </script>
+</body>
+</html>

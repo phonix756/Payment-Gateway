@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashApp Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CashApp</h1>
+            <p>Send and receive money instantly</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="payment-form">
+            <div class="form-header">
+                <div class="logo cashapp">$</div>
+                <h2>Send Payment</h2>
+            </div>
+            
+            <form id="cashappForm" action="cashapp-pending.html" method="GET">
+                <div class="form-group">
+                    <label for="cashTag">To: $Cashtag, Phone, or Email</label>
+                    <input type="text" id="cashTag" name="cashTag" placeholder="$username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <div class="input-with-symbol">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="amount" name="amount" placeholder="0.00" step="0.01" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="note">For</label>
+                    <input type="text" id="note" name="note" placeholder="What's this for?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fromName">From</label>
+                    <input type="text" id="fromName" name="fromName" placeholder="Your name" required>
+                </div>
+                
+                <button type="submit" class="btn-primary cashapp-btn">Pay</button>
+            </form>
+            
+            <div class="security-notice">
+                <p>🔒 Payment secured by CashApp</p>
+            </div>
+            
+            <div class="back-link">
+                <a href="index.html">← Back to Payment Methods</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cash App, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

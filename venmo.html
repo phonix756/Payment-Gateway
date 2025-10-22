@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venmo Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Venmo</h1>
+            <p>Share payments with friends</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="payment-form">
+            <div class="form-header">
+                <div class="logo venmo">V</div>
+                <h2>Pay or Request</h2>
+                <p>Send money to friends</p>
+            </div>
+            
+            <form id="venmoForm" action="venmo-pending.html" method="GET">
+                <div class="form-group">
+                    <label for="recipient">Pay to (Username, phone, email)</label>
+                    <input type="text" id="recipient" name="recipient" placeholder="@username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipientName">Recipient Name</label>
+                    <input type="text" id="recipientName" name="recipientName" placeholder="Full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <div class="input-with-symbol">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="amount" name="amount" placeholder="0.00" step="0.01" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="note">What's it for?</label>
+                    <input type="text" id="note" name="note" placeholder="Dinner, rent, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fromName">Your Name</label>
+                    <input type="text" id="fromName" name="fromName" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="privacy">Privacy</label>
+                    <select id="privacy" name="privacy">
+                        <option value="private">Private</option>
+                        <option value="friends">Friends</option>
+                        <option value="public" selected>Public</option>
+                    </select>
+                </div>
+                
+                <div class="payment-option">
+                    <div class="payment-method">
+                        <div class="method-icon">💳</div>
+                        <div class="method-details">
+                            <strong>Venmo Balance</strong>
+                            <p>$<span id="venmoBalance">45.25</span> available</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary venmo-btn">Pay</button>
+            </form>
+            
+            <div class="security-notice">
+                <p>🔒 Payments are secure and encrypted</p>
+            </div>
+            
+            <div class="back-link">
+                <a href="index.html">← Back to Payment Methods</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Venmo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

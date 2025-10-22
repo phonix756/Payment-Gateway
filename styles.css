@@ -1,0 +1,568 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    opacity: 0.9;
+}
+
+/* Payment Options Grid */
+.payment-options {
+    margin: 40px 0;
+}
+
+.payment-options h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2a5298;
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.payment-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.payment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.payment-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.cashapp {
+    background-color: #00D632;
+}
+
+.chime {
+    background-color: #15D48B;
+}
+
+.paypal {
+    background-color: #0070BA;
+}
+
+.zelle {
+    background-color: #6D1ED4;
+}
+
+.venmo {
+    background-color: #3D95CE;
+}
+
+.etransfer {
+    background-color: #D42B1E;
+}
+
+.payment-card h3 {
+    margin-bottom: 10px;
+    color: #2a5298;
+}
+
+/* Payment Forms */
+.payment-form {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header .logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.form-header h2 {
+    color: #2a5298;
+    margin-bottom: 5px;
+}
+
+.form-header p {
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #2a5298;
+    outline: none;
+}
+
+.input-with-symbol {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-with-symbol input {
+    padding-left: 30px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.cashapp-btn {
+    background: linear-gradient(135deg, #00D632, #00b32a);
+}
+
+.chime-btn {
+    background: linear-gradient(135deg, #15D48B, #10b574);
+}
+
+.paypal-btn {
+    background: linear-gradient(135deg, #0070BA, #005a9e);
+}
+
+.security-notice {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.back-link a {
+    color: #2a5298;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Status Pages */
+.status-page {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.status-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.status-header.pending {
+    border-bottom-color: #ffc107;
+}
+
+.status-header.completed {
+    border-bottom-color: #28a745;
+}
+
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.status-header h2 {
+    color: #2a5298;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.payment-summary {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.summary-amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2a5298;
+    margin-bottom: 10px;
+}
+
+.summary-amount .currency {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.summary-to {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.payment-details {
+    margin-bottom: 30px;
+}
+
+.payment-details h3 {
+    margin-bottom: 15px;
+    color: #2a5298;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row.total {
+    border-top: 2px solid #2a5298;
+    border-bottom: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.detail-row .label {
+    color: #666;
+}
+
+.detail-row .value {
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.pending-badge {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.completed-badge {
+    background: #d4edda;
+    color: #155724;
+}
+
+.progress-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.funding-source {
+    margin-bottom: 30px;
+}
+
+.funding-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.funding-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.funding-details strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-outline {
+    flex: 1;
+    padding: 12px;
+    background: white;
+    border: 2px solid #2a5298;
+    color: #2a5298;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    background: #2a5298;
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 14px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-secondary:hover {
+    opacity: 0.9;
+}
+
+footer {
+    background-color: #2a5298;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .payment-form, .status-page {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .receipt-actions {
+        flex-direction: column;
+    }
+}/* Additional Styles for New Pages */
+.zelle-btn {
+    background: linear-gradient(135deg, #6D1ED4, #5a18b8);
+}
+
+.venmo-btn {
+    background: linear-gradient(135deg, #3D95CE, #2d7cb0);
+}
+
+.etransfer-btn {
+    background: linear-gradient(135deg, #D42B1E, #b3241a);
+}
+
+.payment-option {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+}
+
+.method-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.method-details strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.social-share {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.social-share p {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.security-info {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+}
+
+.security-info h3 {
+    margin-bottom: 10px;
+    color: #856404;
+}
+
+.security-info p {
+    margin-bottom: 10px;
+    color: #856404;
+}
+
+.notification-info {
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    border-radius: 8px;
+    color: #0c5460;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal - Payment Complete</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PayPal</h1>
+            <p>The safer, easier way to pay online</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header completed">
+                <div class="status-icon">✅</div>
+                <h2>Money Sent!</h2>
+                <p class="success-message">Your payment has been completed</p>
+            </div>
+            
+            <div class="payment-summary">
+                <div class="summary-amount">
+                    <span class="amount" id="summaryAmount"></span>
+                    <span class="currency" id="summaryCurrency"></span>
+                </div>
+                <p class="summary-to">to <span id="summaryTo"></span></p>
+            </div>
+            
+            <div class="payment-details">
+                <h3>Payment Details</h3>
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="toValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Note:</span>
+                    <span class="value" id="noteValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge completed-badge">Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Date:</span>
+                    <span class="value" id="dateValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Transaction ID:</span>
+                    <span class="value" id="transactionId"></span>
+                </div>
+            </div>
+            
+            <div class="receipt-actions">
+                <button class="btn-outline">📄 View Receipt</button>
+                <button class="btn-outline">📧 Email Receipt</button>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='paypal.html'">Send Another</button>
+                <button class="btn-primary" onclick="window.location.href='index.html'">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 1999-2025 PayPal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount') || '0.00';
+        const currency = urlParams.get('currency') || 'USD';
+        
+        document.getElementById('summaryAmount').textContent = '$' + amount;
+        document.getElementById('summaryCurrency').textContent = currency;
+        document.getElementById('summaryTo').textContent = urlParams.get('recipientEmail') || 'recipient@example.com';
+        document.getElementById('toValue').textContent = urlParams.get('recipientEmail') || 'recipient@example.com';
+        document.getElementById('amountValue').textContent = '$' + amount + ' ' + currency;
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('noteValue').textContent = urlParams.get('note') || 'No note';
+        document.getElementById('dateValue').textContent = new Date().toLocaleString();
+        document.getElementById('transactionId').textContent = 'PP' + Date.now() + Math.floor(Math.random() * 1000);
+    </script>
+</body>
+</html>

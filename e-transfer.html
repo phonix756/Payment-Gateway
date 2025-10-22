@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Transfer Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Interac E-Transfer</h1>
+            <p>Send money securely between Canadian banks</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="payment-form">
+            <div class="form-header">
+                <div class="logo etransfer">E</div>
+                <h2>Send an Interac E-Transfer</h2>
+                <p>Fast and secure money transfers</p>
+            </div>
+            
+            <form id="etransferForm" action="e-transfer-pending.html" method="GET">
+                <div class="form-group">
+                    <label for="bank">Your Financial Institution</label>
+                    <select id="bank" name="bank" required>
+                        <option value="">Select your bank</option>
+                        <option value="td">TD Canada Trust</option>
+                        <option value="rbc">RBC Royal Bank</option>
+                        <option value="scotiabank">Scotiabank</option>
+                        <option value="bmo">BMO Bank of Montreal</option>
+                        <option value="cibc">CIBC</option>
+                        <option value="other">Other Financial Institution</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipientName">Recipient Name</label>
+                    <input type="text" id="recipientName" name="recipientName" placeholder="Full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipientEmail">Recipient Email Address</label>
+                    <input type="email" id="recipientEmail" name="recipientEmail" placeholder="email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount (CAD)</label>
+                    <div class="input-with-symbol">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="amount" name="amount" placeholder="0.00" step="0.01" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="securityQuestion">Security Question</label>
+                    <input type="text" id="securityQuestion" name="securityQuestion" placeholder="Enter a security question" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="securityAnswer">Security Answer</label>
+                    <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Enter the answer" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" placeholder="Add a personal message"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fromName">Your Name</label>
+                    <input type="text" id="fromName" name="fromName" placeholder="Your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        I agree to the Interac E-Transfer Terms and Conditions
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-primary etransfer-btn">Send E-Transfer</button>
+            </form>
+            
+            <div class="security-notice">
+                <p>🔒 Secured by Interac encryption and your financial institution</p>
+            </div>
+            
+            <div class="back-link">
+                <a href="index.html">← Back to Payment Methods</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Interac Corp. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

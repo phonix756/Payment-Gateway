@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venmo - Payment Complete</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Venmo</h1>
+            <p>Share payments with friends</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header completed">
+                <div class="status-icon">✅</div>
+                <h2>Payment Complete!</h2>
+                <p class="success-message">You paid <span id="successUser"></span> successfully</p>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="recipientValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Name:</span>
+                    <span class="value" id="nameValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Note:</span>
+                    <span class="value" id="noteValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Privacy:</span>
+                    <span class="value" id="privacyValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge completed-badge">Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Date:</span>
+                    <span class="value" id="dateValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Transaction ID:</span>
+                    <span class="value" id="transactionId"></span>
+                </div>
+            </div>
+            
+            <div class="social-share">
+                <p>Share this payment:</p>
+                <div class="share-buttons">
+                    <button class="btn-outline">📱 Text</button>
+                    <button class="btn-outline">📧 Email</button>
+                    <button class="btn-outline">🔗 Copy Link</button>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='venmo.html'">Send Another</button>
+                <button class="btn-primary" onclick="window.location.href='index.html'">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Venmo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipient = urlParams.get('recipient') || '@username';
+        
+        document.getElementById('successUser').textContent = recipient;
+        document.getElementById('recipientValue').textContent = recipient;
+        document.getElementById('nameValue').textContent = urlParams.get('recipientName') || 'Recipient';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00');
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('noteValue').textContent = urlParams.get('note') || 'No note';
+        document.getElementById('privacyValue').textContent = getPrivacyLabel(urlParams.get('privacy') || 'public');
+        document.getElementById('dateValue').textContent = new Date().toLocaleString();
+        document.getElementById('transactionId').textContent = 'VN' + Date.now() + Math.floor(Math.random() * 1000);
+        
+        function getPrivacyLabel(privacy) {
+            const privacyLabels = {
+                'private': 'Private',
+                'friends': 'Friends',
+                'public': 'Public'
+            };
+            return privacyLabels[privacy] || 'Public';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chime - Payment Processing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Chime</h1>
+            <p>Mobile Banking</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header pending">
+                <div class="status-icon">⏳</div>
+                <h2>Processing Your Payment</h2>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">Recipient:</span>
+                    <span class="value" id="recipientValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Email:</span>
+                    <span class="value" id="emailValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Message:</span>
+                    <span class="value" id="messageValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge pending-badge">Processing</span>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <p>Your payment is being processed securely.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='chime.html'">Send Another</button>
+                <button class="btn-primary" onclick="completePayment()">Complete Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Chime. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('recipientValue').textContent = urlParams.get('recipientName') || 'Recipient';
+        document.getElementById('emailValue').textContent = urlParams.get('recipientEmail') || 'email@example.com';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00');
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('messageValue').textContent = urlParams.get('message') || 'No message';
+        
+        function completePayment() {
+            window.location.href = `chime-completed.html?recipientName=${urlParams.get('recipientName')}&recipientEmail=${urlParams.get('recipientEmail')}&amount=${urlParams.get('amount')}&fromName=${urlParams.get('fromName')}&message=${urlParams.get('message')}`;
+        }
+    </script>
+</body>
+</html>

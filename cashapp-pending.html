@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashApp - Payment Pending</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CashApp</h1>
+            <p>Send and receive money instantly</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header pending">
+                <div class="status-icon">⏳</div>
+                <h2>Payment Processing</h2>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="toValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Note:</span>
+                    <span class="value" id="noteValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge pending-badge">Processing</span>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%"></div>
+                </div>
+                <p>Your payment is being processed. This usually takes a few moments.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='cashapp.html'">Send Another</button>
+                <button class="btn-primary" onclick="completePayment()">Complete Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cash App, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('toValue').textContent = urlParams.get('cashTag') || '$username';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00');
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('noteValue').textContent = urlParams.get('note') || 'Payment';
+        
+        function completePayment() {
+            window.location.href = `cashapp-completed.html?cashTag=${urlParams.get('cashTag')}&amount=${urlParams.get('amount')}&fromName=${urlParams.get('fromName')}&note=${urlParams.get('note')}`;
+        }
+    </script>
+</body>
+</html>

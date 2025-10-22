@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Transfer - Complete</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Interac E-Transfer</h1>
+            <p>Send money securely between Canadian banks</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header completed">
+                <div class="status-icon">✅</div>
+                <h2>E-Transfer Sent Successfully!</h2>
+                <p class="success-message">Your money has been sent to <span id="successEmail"></span></p>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="emailValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Name:</span>
+                    <span class="value" id="nameValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Bank:</span>
+                    <span class="value" id="bankValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Security Question:</span>
+                    <span class="value" id="questionValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Message:</span>
+                    <span class="value" id="messageValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge completed-badge">Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Date Sent:</span>
+                    <span class="value" id="dateValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Reference Number:</span>
+                    <span class="value" id="referenceValue"></span>
+                </div>
+            </div>
+            
+            <div class="security-info">
+                <h3>🔐 Security Information</h3>
+                <p>The recipient will need to answer your security question to deposit the funds.</p>
+                <p><strong>Security Answer:</strong> <span id="securityAnswer"></span></p>
+            </div>
+            
+            <div class="notification-info">
+                <p>📧 An email notification has been sent to the recipient with deposit instructions.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='e-transfer.html'">Send Another</button>
+                <button class="btn-primary" onclick="window.location.href='index.html'">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Interac Corp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('recipientEmail') || 'recipient@example.com';
+        
+        document.getElementById('successEmail').textContent = email;
+        document.getElementById('emailValue').textContent = email;
+        document.getElementById('nameValue').textContent = urlParams.get('recipientName') || 'Recipient';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00') + ' CAD';
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('bankValue').textContent = getBankName(urlParams.get('bank') || 'other');
+        document.getElementById('questionValue').textContent = urlParams.get('securityQuestion') || 'Security question';
+        document.getElementById('messageValue').textContent = urlParams.get('message') || 'No message';
+        document.getElementById('securityAnswer').textContent = urlParams.get('securityAnswer') || 'Security answer';
+        document.getElementById('dateValue').textContent = new Date().toLocaleString();
+        document.getElementById('referenceValue').textContent = 'ET' + Date.now();
+        
+        function getBankName(bankCode) {
+            const banks = {
+                'td': 'TD Canada Trust',
+                'rbc': 'RBC Royal Bank',
+                'scotiabank': 'Scotiabank',
+                'bmo': 'BMO Bank of Montreal',
+                'cibc': 'CIBC',
+                'other': 'Your Financial Institution'
+            };
+            return banks[bankCode] || 'Your Financial Institution';
+        }
+    </script>
+</body>
+</html>

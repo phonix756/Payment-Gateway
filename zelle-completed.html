@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zelle - Payment Complete</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Zelle</h1>
+            <p>Send money to friends and family</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header completed">
+                <div class="status-icon">✅</div>
+                <h2>Money Sent!</h2>
+                <p class="success-message">Your payment was sent successfully to <span id="successRecipient"></span></p>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="recipientValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Name:</span>
+                    <span class="value" id="nameValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Bank:</span>
+                    <span class="value" id="bankValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Memo:</span>
+                    <span class="value" id="memoValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge completed-badge">Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Date:</span>
+                    <span class="value" id="dateValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Reference #:</span>
+                    <span class="value" id="referenceValue"></span>
+                </div>
+            </div>
+            
+            <div class="security-notice">
+                <p>💰 Money typically arrives within minutes when both parties are enrolled</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='zelle.html'">Send Another</button>
+                <button class="btn-primary" onclick="window.location.href='index.html'">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Early Warning Services, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipient = urlParams.get('recipient') || 'recipient@example.com';
+        
+        document.getElementById('successRecipient').textContent = recipient;
+        document.getElementById('recipientValue').textContent = recipient;
+        document.getElementById('nameValue').textContent = urlParams.get('recipientName') || 'Recipient';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00');
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('bankValue').textContent = getBankName(urlParams.get('bank') || 'other');
+        document.getElementById('memoValue').textContent = urlParams.get('memo') || 'No memo';
+        document.getElementById('dateValue').textContent = new Date().toLocaleString();
+        document.getElementById('referenceValue').textContent = 'ZL' + Date.now();
+        
+        function getBankName(bankCode) {
+            const banks = {
+                'chase': 'Chase',
+                'bankofamerica': 'Bank of America',
+                'wellsfargo': 'Wells Fargo',
+                'usbank': 'U.S. Bank',
+                'other': 'Your Bank'
+            };
+            return banks[bankCode] || 'Your Bank';
+        }
+    </script>
+</body>
+</html>

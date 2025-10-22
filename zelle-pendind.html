@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zelle - Payment Processing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Zelle</h1>
+            <p>Send money to friends and family</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="status-page">
+            <div class="status-header pending">
+                <div class="status-icon">⏳</div>
+                <h2>Processing Your Payment</h2>
+                <p>Money is being sent to <span id="processingRecipient"></span></p>
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-row">
+                    <span class="label">To:</span>
+                    <span class="value" id="recipientValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Name:</span>
+                    <span class="value" id="nameValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount:</span>
+                    <span class="value" id="amountValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">From:</span>
+                    <span class="value" id="fromValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Bank:</span>
+                    <span class="value" id="bankValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Description:</span>
+                    <span class="value" id="memoValue"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status:</span>
+                    <span class="value status-badge pending-badge">Processing</span>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%"></div>
+                </div>
+                <p>Your payment is being processed securely through your bank.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="window.location.href='zelle.html'">Cancel</button>
+                <button class="btn-primary" onclick="completePayment()">Complete Transfer</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Early Warning Services, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipient = urlParams.get('recipient') || 'recipient@example.com';
+        
+        document.getElementById('processingRecipient').textContent = recipient;
+        document.getElementById('recipientValue').textContent = recipient;
+        document.getElementById('nameValue').textContent = urlParams.get('recipientName') || 'Recipient';
+        document.getElementById('amountValue').textContent = '$' + (urlParams.get('amount') || '0.00');
+        document.getElementById('fromValue').textContent = urlParams.get('fromName') || 'You';
+        document.getElementById('bankValue').textContent = getBankName(urlParams.get('bank') || 'other');
+        document.getElementById('memoValue').textContent = urlParams.get('memo') || 'No memo';
+        
+        function getBankName(bankCode) {
+            const banks = {
+                'chase': 'Chase',
+                'bankofamerica': 'Bank of America',
+                'wellsfargo': 'Wells Fargo',
+                'usbank': 'U.S. Bank',
+                'other': 'Your Bank'
+            };
+            return banks[bankCode] || 'Your Bank';
+        }
+        
+        function completePayment() {
+            window.location.href = `zelle-completed.html?recipient=${recipient}&recipientName=${urlParams.get('recipientName')}&amount=${urlParams.get('amount')}&fromName=${urlParams.get('fromName')}&bank=${urlParams.get('bank')}&memo=${urlParams.get('memo')}`;
+        }
+    </script>
+</body>
+</html>
